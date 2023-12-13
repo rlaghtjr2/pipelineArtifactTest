@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    labels:
+        tier: pipe-dev-frontend-replica
+    name: pipe-dev-frontend-replica
+    namespace: hg-test
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            tier: pipe-dev-frontend-replica
+    template:
+        metadata:
+            labels:
+                tier: pipe-dev-frontend-replica
+        spec:
+            containers:
+                -
+                    image: 'gcr.io/google_samples/gb-frontend:v3'
+                    name: frontend-replica
